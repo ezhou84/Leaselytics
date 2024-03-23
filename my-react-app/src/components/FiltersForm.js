@@ -12,9 +12,8 @@ import {
 } from '@mui/material';
 
 const FiltersForm = () => {
-  const [bedrooms, setBedrooms] = React.useState('all');
+  const [bedrooms, setBedrooms] = React.useState('');
   const [bathrooms, setBathrooms] = React.useState('');
-
 
 
   const handleBedroomChange = (event) => {
@@ -43,43 +42,21 @@ const FiltersForm = () => {
         sx={{ my: 2 }}
       />
 
-      <FormControl fullWidth sx={{ my: 2 }}>
-        <InputLabel id="bedroom-label">Bedrooms</InputLabel>
-        <Select
-          labelId="bedroom-label"
-          id="bedroom-select"
-          value={bedrooms}
+      <TextField
           label="Bedrooms"
+          sx={{ my: 2 }}
+          value={bedrooms}
+          defaultValue=""
           onChange={handleBedroomChange}
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="1+">1+</MenuItem>
-          <MenuItem value="2+">2+</MenuItem>
-          <MenuItem value="3+">3+</MenuItem>
-          <MenuItem value="4+">4+</MenuItem>
-          <MenuItem value="5+">5+</MenuItem>
-          <MenuItem value="6+">6+</MenuItem>
-        </Select>
-      </FormControl>
+      />
 
-      <FormControl sx={{ my: 2 }}>
-        <InputLabel id="bathrooms-label">Bathrooms</InputLabel>
-        <Select
-          labelId="bathrooms-label"
-          id="bathrooms-select"
+      <TextField
+          label="Bathrooms"
+          sx={{ my: 2 }}
           value={bathrooms}
           defaultValue=""
-          label="Bathrooms"
           onChange={handleBathroomChange}
-        >
-          <MenuItem value={"1+"}>1+</MenuItem>
-          <MenuItem value={"1.5+"}>1.5+</MenuItem>
-          <MenuItem value={"2+"}>2</MenuItem>
-          <MenuItem value={"3+"}>3</MenuItem>
-          <MenuItem value={"4+"}>4</MenuItem>
-          <MenuItem value={"5+"}>5</MenuItem>
-        </Select>
-      </FormControl>
+      />
 
       <FormControl fullWidth sx={{ my: 2 }}>
         <InputLabel id="RentalType-label">Rental Type</InputLabel>
@@ -96,15 +73,11 @@ const FiltersForm = () => {
         </Select>
       </FormControl>
 
-      <Box sx={{ my: 2 }}>
-        <Typography variant="subtitle1" gutterBottom>
-          Square Footage
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <TextField label="Min" type="number" sx={{ mr: 1 }} />
-          <TextField label="Max" type="number" />
-        </Box>
-      </Box>
+
+      <TextField
+          label="Square Footage"
+          sx={{ my: 2 }}
+      />
 
       <Button variant="contained" color="primary" sx={{ mt: 2 }}>
         Submit
