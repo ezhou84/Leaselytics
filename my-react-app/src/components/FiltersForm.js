@@ -28,24 +28,20 @@ const FiltersForm = () => {
 
 
   return (
+
     <Box sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
       <Typography variant="h6">Property Rentals</Typography>
+
+      <TextField
+          label="Neighbourhood"
+          sx={{ my: 2 }}
+      />
 
       <TextField
         label="Location"
         defaultValue="Vancouver, British Columbia"
         sx={{ my: 2 }}
       />
-
-      <Box sx={{ my: 2 }}>
-        <Typography variant="subtitle1" gutterBottom>
-          Price Range
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <TextField label="Min Price" type="number" sx={{ mr: 1 }} />
-          <TextField label="Max Price" type="number" />
-        </Box>
-      </Box>
 
       <FormControl fullWidth sx={{ my: 2 }}>
         <InputLabel id="bedroom-label">Bedrooms</InputLabel>
@@ -102,7 +98,7 @@ const FiltersForm = () => {
 
       <Box sx={{ my: 2 }}>
         <Typography variant="subtitle1" gutterBottom>
-          Square meters
+          Square Footage
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <TextField label="Min" type="number" sx={{ mr: 1 }} />
