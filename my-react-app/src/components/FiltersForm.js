@@ -16,6 +16,7 @@ const FiltersForm = () => {
   const [bathrooms, setBathrooms] = React.useState('');
 
 
+
   const handleBedroomChange = (event) => {
     setBedrooms(event.target.value);
   };
@@ -70,6 +71,7 @@ const FiltersForm = () => {
         <Select
           labelId="bathrooms-label"
           id="bathrooms-select"
+          value={bathrooms}
           defaultValue=""
           label="Bathrooms"
           onChange={handleBathroomChange}
@@ -80,6 +82,21 @@ const FiltersForm = () => {
           <MenuItem value={"3+"}>3</MenuItem>
           <MenuItem value={"4+"}>4</MenuItem>
           <MenuItem value={"5+"}>5</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl fullWidth sx={{ my: 2 }}>
+        <InputLabel id="RentalType-label">Rental Type</InputLabel>
+        <Select
+          labelId="RentalType-label"
+          id="RentalType-select"
+          label="RentalType"
+        // onChange={handleRentalTypeChange}
+        >
+          <MenuItem value="apartment/condo">Apartment/condo</MenuItem>
+          <MenuItem value="House">House</MenuItem>
+          <MenuItem value="Room Only">Room Only</MenuItem>
+          <MenuItem value="Townhouse">Townhouse</MenuItem>
         </Select>
       </FormControl>
 
