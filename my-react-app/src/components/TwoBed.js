@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Card, CardContent, Typography, Box, IconButton } from '@mui/material';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'; // Make sure this import is included
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 
 const TwoBed = () => {
     // Hardcoded values
-    const twobeds = 80;
-    const percentChange = -5; // Assuming this value is negative for decrease
+    const twobeds = 130;
+    const percentChange = -5;
 
     return (
-        <Card sx={{ margin: '20px', maxWidth: 220, borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ margin: '20px', minWidth: 220, maxHeight: 150, alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box>

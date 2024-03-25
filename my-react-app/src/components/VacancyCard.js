@@ -8,7 +8,7 @@ const VacancyCard = () => {
     const percentChange = 12;
 
     return (
-        <Card sx={{ margin: '20px', maxWidth: 220, borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ margin: '20px', minWidth: 220, maxHeight: 150, borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box>

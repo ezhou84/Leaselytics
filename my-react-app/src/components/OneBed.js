@@ -4,11 +4,11 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const OneBed = () => {
     // Hardcoded values 
-    const onebeds = 120;
+    const onebeds = 380;
     const percentChange = 5;
 
     return (
-        <Card sx={{ margin: '20px', maxWidth: 220, borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ margin: '20px', minWidth: 220, maxHeight: 150, borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box>
