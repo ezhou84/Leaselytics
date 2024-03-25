@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
 
 const ListingsCard = ({ address, price, imagePath, bed, bath }) => {
 
     return (
-        <Card sx={{ maxWidth: 500, borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ boxShadow: 3 }}>
             <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box>
-                        <img src={imagePath} alt="Rental Listing" style={{width: 468}}/>
+                        <CardMedia
+                            component="img"
+                            alt="Rental Listing"
+                            image={imagePath}
+                            style={{ borderRadius: 16 }}
+                        />
                         <Typography variant="h3" component="div">
                             {price}
                         </Typography>
