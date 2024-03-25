@@ -10,6 +10,7 @@ import {
   Select,
   MenuItem
 } from '@mui/material';
+import logoSvg from '../leaselyticsWhite.svg';
 
 const FiltersForm = () => {
   const [bedrooms, setBedrooms] = React.useState('');
@@ -25,37 +26,40 @@ const FiltersForm = () => {
   };
 
 
-
   return (
 
-    <Box sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
-      <Typography variant="h6">Property Rentals</Typography>
+
+    <Box className="form-content" sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
+
+      <Typography variant="h6">Property Price Predictor</Typography>
 
       <TextField
-          label="Neighbourhood"
-          sx={{ my: 2 }}
-      />
-
-      <TextField
-        label="Location"
-        defaultValue="Vancouver, British Columbia"
+        label="Neighbourhood"
         sx={{ my: 2 }}
       />
 
+      {/* <TextField
+        label="Location"
+        defaultValue="Vancouver, British Columbia"
+        sx={{ my: 2 }}
+      /> */}
+
       <TextField
-          label="Bedrooms"
-          sx={{ my: 2 }}
-          value={bedrooms}
-          defaultValue=""
-          onChange={handleBedroomChange}
+        type="number"
+        label="Bedrooms"
+        sx={{ my: 2 }}
+        value={bedrooms}
+        defaultValue=""
+        onChange={handleBedroomChange}
       />
 
       <TextField
-          label="Bathrooms"
-          sx={{ my: 2 }}
-          value={bathrooms}
-          defaultValue=""
-          onChange={handleBathroomChange}
+        type="number"
+        label="Bathrooms"
+        sx={{ my: 2 }}
+        value={bathrooms}
+        defaultValue=""
+        onChange={handleBathroomChange}
       />
 
       <FormControl fullWidth sx={{ my: 2 }}>
@@ -75,11 +79,20 @@ const FiltersForm = () => {
 
 
       <TextField
-          label="Square Footage"
-          sx={{ my: 2 }}
+        label="Square Footage"
+        sx={{ my: 2 }}
       />
 
-      <Button variant="contained" color="primary" sx={{ mt: 2 }}>
+      <Button
+        variant="contained"
+        sx={{
+          mt: 2,
+          backgroundColor: '#4877ee', // sets the background color to black
+          '&:hover': {
+            backgroundColor: '#1e3264' // optional: changes color slightly on hover for visual feedback
+          },
+        }}
+      >
         Submit
       </Button>
     </Box>
