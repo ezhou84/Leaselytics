@@ -6,6 +6,7 @@ import logoSvg from './LeaseLyticsLogoBlue.svg';
 
 
 function App() {
+
   return (
     <div className="App">
       <div className="container">
@@ -16,8 +17,8 @@ function App() {
         <div className="block">
           <Block></Block>
         </div>
-
       </div>
+
     </div>
   );
 }
