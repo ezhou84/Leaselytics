@@ -10,17 +10,18 @@ import {
   MenuItem,
 } from '@mui/material';
 import logoSvg from '../leaselyticsWhite.svg';
-import { fetchPrice } from '../api-client';
+import { fetchPrice } from '../api-client.js';
 
 async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft, setResponse) {
-  let resp = await fetchPrice({
-    neighbourhood,
-    location,
-    bedrooms,
-    bathrooms,
-    type,
-    sqft
-  })
+  const req = {
+    "neighbourhood": neighbourhood,
+    "location": location,
+    "bedrooms": bedrooms,
+    "bathrooms": bathrooms,
+    "type": type,
+    "sqft": sqft
+  }
+  const resp = await fetchPrice(req);
   setResponse(resp);
 }
 

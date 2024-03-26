@@ -1,15 +1,17 @@
 import express from "express";
+import cors from "cors";
 import OpenAI from "openai";
 
-require('dotenv').config();
+import 'dotenv/config'
 
 const OPEN_AI_API_KEY = process.env.OPEN_AI_API_KEY;
 const openai = new OpenAI({ apiKey: OPEN_AI_API_KEY });
 
 const router = express.Router();
+router.use(cors());
 router.use(express.json());
 
-router.get("/price", async (req, res) => {  
+router.get("/price", async (req, res) => {
     const { 
         neighbourhood,
         location,
@@ -28,9 +30,9 @@ router.get("/price", async (req, res) => {
         model: "gpt-3.5-turbo",
     });
 
-    const resp = completion.choices[0].message.content;
+    const price = completion.choices[0].message.content;
 
-    res.send({ resp });
+    res.send({ price });
 })
 
 export default router;
