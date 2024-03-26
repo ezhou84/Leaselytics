@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import FiltersForm from './components/FiltersForm';
-import Block from './components/Block';
+import FiltersForm from './components/FiltersForm.js';
+import Block from './components/Block.js';
 import logoSvg from './LeaseLyticsLogoBlue.svg';
 
 
