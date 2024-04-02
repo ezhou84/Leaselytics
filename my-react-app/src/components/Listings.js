@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Box } from '@mui/material';
-import ListingsCard from './ListingsCard';
+import ListingsCard from './ListingsCard.js';
 
 const Listings = ({ units }) => {
     const [activeIndex, setActiveIndex] = React.useState(0);

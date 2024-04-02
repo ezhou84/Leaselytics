@@ -12,27 +12,15 @@ import {
 import logoSvg from '../leaselyticsWhite.svg';
 import { fetchPrice } from '../api-client.js';
 
-async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft, setResponse) {
-  const req = {
-    "neighbourhood": neighbourhood,
-    "location": location,
-    "bedrooms": bedrooms,
-    "bathrooms": bathrooms,
-    "type": type,
-    "sqft": sqft
-  }
-  const resp = await fetchPrice(req);
-  setResponse(resp);
-}
 
-const FiltersForm = () => {
+
+const FiltersForm = ({ onResponse }) => {
   const [neighbourhood, setNeighbourhood] = React.useState('');
   const [location, setLocation] = React.useState('');
   const [bedrooms, setBedrooms] = React.useState(0);
   const [bathrooms, setBathrooms] = React.useState(0);
   const [type, setType] = React.useState('');
   const [sqft, setSqft] = React.useState(0);
-  const [response, setResponse] = React.useState('');
 
 
   const handleNeighbourhoodChange = (event) => {
@@ -41,16 +29,16 @@ const FiltersForm = () => {
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
-  }; 
-  
+  };
+
   const handleBedroomChange = (event) => {
     setBedrooms(event.target.value);
   };
 
   const handleBathroomChange = (event) => {
     setBathrooms(event.target.value);
-  }; 
-  
+  };
+
   const handleTypeChange = (event) => {
     setType(event.target.value);
   };
@@ -58,6 +46,21 @@ const FiltersForm = () => {
   const handleSqftChange = (event) => {
     setSqft(event.target.value);
   };
+
+  async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft) {
+    const req = {
+      "neighbourhood": neighbourhood,
+      "location": location,
+      "bedrooms": bedrooms,
+      "bathrooms": bathrooms,
+      "type": type,
+      "sqft": sqft
+    }
+    const resp = await fetchPrice(req);
+    // console.log("response: " + resp)
+    onResponse(resp);
+
+  }
 
   return (
 
@@ -67,15 +70,15 @@ const FiltersForm = () => {
 
       <TextField
         label="Neighbourhood"
-          sx={{ my: 2 }}
-          value={neighbourhood}
-          defaultValue=""
-          onChange={handleNeighbourhoodChange}
+        sx={{ my: 2 }}
+        value={neighbourhood}
+        defaultValue=""
+        onChange={handleNeighbourhoodChange}
       />
 
       <TextField
-        label="Location"
-        defaultValue="Vancouver, British Columbia"
+        label="Address"
+        defaultValue=""
         sx={{ my: 2 }}
         value={location}
         onChange={handleLocationChange}
@@ -117,31 +120,31 @@ const FiltersForm = () => {
       </FormControl>
 
       <TextField
-          label="Square Footage"
-          sx={{ my: 2 }}
-          value={sqft}
-          defaultValue=""
-          onChange={handleSqftChange}
+        label="Square Footage"
+        sx={{ my: 2 }}
+        value={sqft}
+        defaultValue=""
+        onChange={handleSqftChange}
       />
 
       <Button
         variant="contained"
         sx={{
           mt: 2,
-          backgroundColor: '#4877ee', // sets the background color to black
+          backgroundColor: '#4877ee',
           '&:hover': {
-            backgroundColor: '#1e3264' // optional: changes color slightly on hover for visual feedback
+            backgroundColor: '#1e3264'
           },
         }}
         onClick={() => {
-          onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft, setResponse)
+          onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft)
         }}>
         Submit
       </Button>
 
-      <div>
-        { response === "" ? response : <></> }
-      </div>
+      {/* <div>
+        {response === "" ? response : <></>}
+      </div> */}
     </Box>
 
   );

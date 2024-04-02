@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import CustomBarChart from './BarChart'
-import RentalTypeDensityPieChart from './PieChart'
-import VacancyCard from './VacancyCard'
-import OneBed from './OneBed'
-import TwoBed from './TwoBed'
-import Listings from './Listings';
+import CustomBarChart from './BarChart.js'
+import RentalTypeDensityPieChart from './PieChart.js'
+import VacancyCard from './VacancyCard.js'
+import OneBed from './OneBed.js'
+import TwoBed from './TwoBed.js'
+import Listings from './Listings.js';
 import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg"
 import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg"
 import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg"
 import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg"
-import PriceCard from './PriceCard'
+import PriceCard from './PriceCard.js'
 
 
 
-const Block = () => {
+const Block = ({ response }) => {
 
     const [isSubmitted, setIsSubmitted] = useState(true);
 
@@ -63,7 +63,7 @@ const Block = () => {
                                 <OneBed />
                                 <TwoBed />
                             </div>
-                            <PriceCard />
+                            <PriceCard response={response} />
                         </div>
                         {/* Right column for the listings */}
                         <Listings units={units} />

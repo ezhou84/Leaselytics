@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card, CardContent, Typography, Box, IconButton } from '@mui/material';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+// import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const VacancyCard = () => {
     // Hardcoded values 
@@ -19,9 +19,9 @@ const VacancyCard = () => {
                             {vacancies}
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', color: 'success.main' }}>
-                            <ArrowUpwardIcon />
+                            {/* <ArrowUpwardIcon /> */}
                             <Typography sx={{ ml: 0.5 }}>
-                                {percentChange}% Since last month
+                                Up {percentChange}% Since last month
                             </Typography>
                         </Box>
                     </Box>

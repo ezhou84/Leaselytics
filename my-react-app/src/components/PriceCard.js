@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Card, CardContent, Typography, Box, IconButton } from '@mui/material';
 
-const PriceCard = () => {
+const PriceCard = ({ response }) => {
     // Hardcoded values
-    const price = 1500
+    const price = response
 
     return (
         <Card sx={{ margin: '20px', width: 748, minHeight: 280, alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
@@ -14,7 +14,7 @@ const PriceCard = () => {
                             Predicted Listing Price
                         </Typography>
                         <Typography variant="h3" component="div">
-                            ${price}
+                            {price}
                         </Typography>
                     </Box>
                 </Box>
