@@ -13,7 +13,7 @@ import PriceCard from './PriceCard.js'
 
 
 
-const Block = ({ response }) => {
+const Block = ({ request, response }) => {
 
     const [isSubmitted, setIsSubmitted] = useState(true);
 
@@ -55,22 +55,22 @@ const Block = ({ response }) => {
         <div>
             {isSubmitted && (
                 <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: '10px' }}>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <PriceCard request={request} response={response} />
                         {/* Left column for cards and price card */}
                         <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', marginRight: '20px' }}>
+                                <Listings units={units} />
                                 <VacancyCard />
                                 <OneBed />
                                 <TwoBed />
                             </div>
-                            <PriceCard response={response} />
                         </div>
                         {/* Right column for the listings */}
-                        <Listings units={units} />
                     </div>
 
                     {/* Spacer div to push the bottom content down */}
-                    <div style={{ flex: 1 }}></div>
+                    {/* <div style={{ flex: 1 }}></div> */}
 
                     {/* Bottom content for bar and pie charts */}
                     <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>

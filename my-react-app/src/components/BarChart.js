@@ -22,7 +22,7 @@ const dataset = rentalData.map(data => ({ month: data.month, value: data.price }
 
 function CustomBarChart() {
     return (
-        <div>
+        <div style={{ width: '100%', height: '100%' }}>
 
             <BarChart
                 dataset={dataset}

@@ -101,18 +101,20 @@ router.get("/price", async (req, res) => {
         type,
         sqft
     } = req.body;
+    console.log(req.body);
 
     const examplesString = buildExamplesString(csvData);
 
-    console.log(examplesString);
-    console.log(csvData.length)
+    // console.log(examplesString);
+    // console.log(csvData.length)
 
     const prompt = `The following are rental prices for various properties:\n${examplesString}\nGiven a ${type} for rent in ${neighbourhood}, ${location} with ${bedrooms} bedrooms, ${bathrooms} bathrooms, and an area of ${sqft} square feet, how much should it be priced per month?`;
-
+    console.log(`Given a ${type} for rent in ${neighbourhood}, ${location} with ${bedrooms} bedrooms, ${bathrooms} bathrooms, and an area of ${sqft} square feet, how much should it be priced per month?`)
     const completion = await openai.chat.completions.create({
         messages: [
             { role: "system", content: "You are an assistant helping a landlord price their rental units in Canada. Simply give the estimated price in one sentence, starting with \"The estimated price for this rental unit \". Give a single point estimate. Only include the price." },
             {
+                // role: "user", content: `Given a ${type} for rent in ${neighbourhood}, ${location} with ${bedrooms} bedrooms, ${bathrooms} bathrooms, and an area of ${sqft} square feet, how much should it be priced per month?`
                 role: "user", content: prompt
             }
         ],

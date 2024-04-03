@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { Card, CardContent, Typography, Box, IconButton } from '@mui/material';
 
-const PriceCard = ({ response }) => {
+const PriceCard = ({ request, response }) => {
     // Hardcoded values
     const price = response
+    console.log(`request: ${request}`)
+    console.log(`response: ${response}`)
 
     return (
-        <Card sx={{ margin: '20px', width: 748, minHeight: 280, alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', margin: '20px', alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Box>
+                <Box sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box sx={{ alignItems: 'center' }}>
                         <Typography sx={{ fontSize: 14, color: 'text.secondary', fontWeight: 'bold' }}>
-                            Predicted Listing Price
+                            PREDICTED LISTING PRICE
+                        </Typography>
+                        <Typography variant="h2" component="div">
+                            {request.location}
                         </Typography>
                         <Typography variant="h3" component="div">
                             {price}
