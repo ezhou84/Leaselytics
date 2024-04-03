@@ -68,13 +68,55 @@ const FiltersForm = ({ onResponse }) => {
 
       <Typography variant="h6">Property Price Predictor</Typography>
 
-      <TextField
+      {/* <TextField
         label="Neighbourhood"
         sx={{ my: 2 }}
         value={neighbourhood}
         defaultValue=""
         onChange={handleNeighbourhoodChange}
-      />
+      /> */}
+
+      <FormControl fullWidth sx={{ my: 2 }}>
+        <InputLabel id="Neighbourhood-label">Neighbourhood</InputLabel>
+        <Select
+          labelId="Neighbourhood-label"
+          label="Neighbourhood"
+          value={neighbourhood}
+          defaultValue="Neighbourhood"
+          onChange={handleNeighbourhoodChange}
+        >
+          <MenuItem value="Cambie">Cambie</MenuItem>
+          <MenuItem value="Coal Harbour">Coal Harbour</MenuItem>
+          <MenuItem value="Collingwood">Collingwood</MenuItem>
+          <MenuItem value="Downtown East">Downtown East</MenuItem>
+          <MenuItem value="Downtown West">Downtown West</MenuItem>
+          <MenuItem value="Dunbar">Dunbar</MenuItem>
+          <MenuItem value="Fairview">Fairview</MenuItem>
+          <MenuItem value="False Creek">False Creek</MenuItem>
+          <MenuItem value="Grandview East">Grandview East</MenuItem>
+          <MenuItem value="Hastings">Hastings</MenuItem>
+          <MenuItem value="Hastings Sunrise">Hastings Sunrise</MenuItem>
+          <MenuItem value="Killarney">Killarney</MenuItem>
+          <MenuItem value="Kerrisdale">Kerrisdale</MenuItem>
+          <MenuItem value="Kitsilano">Kitsilano</MenuItem>
+          <MenuItem value="Knight">Knight</MenuItem>
+          <MenuItem value="Marpole">Marpole</MenuItem>
+          <MenuItem value="Mount Pleasant East">Mount Pleasant</MenuItem>
+          <MenuItem value="Oakridge">Oakridge</MenuItem>
+          <MenuItem value="Point Grey">Point Grey</MenuItem>
+          <MenuItem value="Renfrew">Renfrew</MenuItem>
+          <MenuItem value="Shaughnessy">Shaughnessy</MenuItem>
+          <MenuItem value="South Granville">South Granville</MenuItem>
+          <MenuItem value="South Marine">South Marine</MenuItem>
+          <MenuItem value="South Vancouver">South Vancouver</MenuItem>
+          <MenuItem value="Southwest Marine">Southwest Marine</MenuItem>
+          <MenuItem value="Strathcona">Strathcona</MenuItem>
+          <MenuItem value="University (UBC)">University/UBC</MenuItem>
+          <MenuItem value="Victoria East">Victoria</MenuItem>
+          <MenuItem value="West End">West End</MenuItem>
+          <MenuItem value="Yaletown">Yaletown</MenuItem>
+        </Select>
+      </FormControl>
 
       <TextField
         label="Address"
