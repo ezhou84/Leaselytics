@@ -48,6 +48,12 @@ const FiltersForm = ({ onResponse }) => {
   };
 
   async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft) {
+    // console.log(neighbourhood)
+    // console.log(location)
+    // console.log(bedrooms)
+    // console.log(bathrooms)
+    // console.log(type)
+    // console.log(sqft)
     const req = {
       "neighbourhood": neighbourhood,
       "location": location,
@@ -57,8 +63,8 @@ const FiltersForm = ({ onResponse }) => {
       "sqft": sqft
     }
     const resp = await fetchPrice(req);
-    // console.log("response: " + resp)
-    onResponse(resp);
+    // console.log("FiltersForm response: " + resp)
+    onResponse(req, resp);
 
   }
 

@@ -12,16 +12,18 @@ function RentalTypeDensityPieChart() {
     const colors = ['#4877ee', '#ffcc00', '#ff6b6b', '#8fd14f'];
 
     return (
-        <PieChart
-            series={[
-                {
-                    data: rentalTypeData,
-                },
-            ]}
-            colors={colors}
-            width={600}
-            height={300}
-        />
+        <div style={{ width: '100%', height: '100%' }}>
+            <PieChart
+                series={[
+                    {
+                        data: rentalTypeData,
+                    },
+                ]}
+                colors={colors}
+                width={600}
+                height={300}
+            />
+        </div>
     );
 }
 

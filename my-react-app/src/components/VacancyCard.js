@@ -8,17 +8,17 @@ const VacancyCard = () => {
     const percentChange = 12;
 
     return (
-        <Card sx={{ margin: '20px', minWidth: 220, maxHeight: 150, borderRadius: '16px', boxShadow: 3 }}>
+        <Card sx={{ margin: '20px', flexGrow: 1, display: 'flex', flexDirection: 'column', minWidth: 220, maxHeight: 220, borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <Typography sx={{ fontSize: 14, color: 'text.secondary', fontWeight: 'bold' }}>
                             VACANCIES
                         </Typography>
                         <Typography variant="h3" component="div">
                             {vacancies}
                         </Typography>
-                        <Box sx={{ display: 'flex', alignItems: 'center', color: 'success.main' }}>
+                        <Box sx={{ alignItems: 'center', color: 'success.main' }}>
                             {/* <ArrowUpwardIcon /> */}
                             <Typography sx={{ ml: 0.5 }}>
                                 Up {percentChange}% Since last month
