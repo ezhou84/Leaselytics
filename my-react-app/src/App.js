@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import FiltersForm from './components/FiltersForm.js';
 import Block from './components/Block.js';
+import Login from './Login.js';
 import logoSvg from './LeaseLyticsLogoBlue.svg';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <Login />
       <div className="container" style={{ width: '100%' }}>
         <div className="form">
           <img src={logoSvg} alt="Logo" style={{ width: '400px', height: 'auto' }} />
