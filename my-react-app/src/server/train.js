@@ -45,10 +45,6 @@ if (!indexNames.includes('leaselytics')) {
 
 const index = pc.Index("leaselytics");
 
-// const sentences = [];
-// const prices = [];
-// const beds = [];
-// const baths = [];
 const metadata = [];
 
 fs.createReadStream(inputFilePath)
@@ -61,10 +57,6 @@ fs.createReadStream(inputFilePath)
         const { Rental_Price, Sqft, Bedroom, Bathroom, Rental_Type, Neighbourhood } = row;
         const sentence = `"A ${Rental_Type} in ${Neighbourhood}, Vancouver with ${Bedroom}, ${Bathroom}, and an area of ${Sqft} costs ${Rental_Price} to rent."`.replace(/\r?\n|\r/g, '');        
         row.Sentence = sentence;
-        // sentences.push(sentence);
-        // prices.push(Rental_Price);
-        // beds.push(Bedroom);
-        // baths.push(Bathroom);
         metadata.push({
             text: sentence,
             price: Rental_Price,
