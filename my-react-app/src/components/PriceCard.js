@@ -9,7 +9,7 @@ const PriceCard = ({ request, response }) => {
             <CardContent>
                 <Box sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                     <Box sx={{ alignItems: 'center' }}>
-                        <Typography sx={{ fontSize: 20, color: 'text.secondary', fontWeight: 'bold' }}>
+                        <Typography sx={{ fontSize: 24, color: 'text.secondary', fontWeight: 'bold', mb: 1 }}>
                             PREDICTED LISTING PRICE
                         </Typography>
                         <Typography variant="h2" component="div">

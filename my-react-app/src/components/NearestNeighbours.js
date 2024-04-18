@@ -9,10 +9,10 @@ const NearestNeighbours = ({ neighbours }) => {
         <Card sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', margin: '20px', alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
             <CardContent>
                 <Box sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Typography sx={{ fontSize: 20, color: 'text.secondary', fontWeight: 'bold', mb: 2 }}>
+                    <Typography sx={{ fontSize: 24, color: 'text.secondary', fontWeight: 'bold', mb: 2 }}>
                         MOST SIMILAR UNITS
                     </Typography>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} justifyContent="center">
                         {neighbours.map((unit, index) => (
                             <Grid
                                 item
@@ -26,11 +26,12 @@ const NearestNeighbours = ({ neighbours }) => {
                                 <ListingsCard
                                     address={unit.address}
                                     price={unit.price}
-                                    // imagePath={unit.imagePath}
                                     sqft={unit.sqft}
                                     bed={unit.bed}
                                     bath={unit.bath}
                                     type={unit.type}
+                                    neighbourhood={unit.neighbourhood}
+                                    imagePath={unit.link}
                                 />
                             </Grid>
                         ))}

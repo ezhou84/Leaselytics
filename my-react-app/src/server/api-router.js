@@ -62,6 +62,8 @@ router.post("/price", async (req, res) => {
         const bed = match["metadata"]["bed"];
         const bath = match["metadata"]["bath"];
         const type = match["metadata"]["type"];
+        const neighbourhood = match["metadata"]["neighbourhood"];
+        const link = match["metadata"]["link"];
         
         return {
             address: address,
@@ -69,7 +71,9 @@ router.post("/price", async (req, res) => {
             sqft: sqft,
             bed: bed,
             bath: bath,
-            type: type
+            type: type,
+            neighbourhood: neighbourhood,
+            link: link
         };
     });
     console.log(neighbours);

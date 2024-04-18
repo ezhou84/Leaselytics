@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { fetchPrice } from '../api-client.js';
 
-
 const FiltersForm = ({ onResponse }) => {
   const [neighbourhood, setNeighbourhood] = React.useState('');
   const [location, setLocation] = React.useState('');
@@ -19,7 +18,6 @@ const FiltersForm = ({ onResponse }) => {
   const [bath, setBath] = React.useState(0);
   const [type, setType] = React.useState('');
   const [sqft, setSqft] = React.useState(0);
-
 
   const handleNeighbourhoodChange = (event) => {
     setNeighbourhood(event.target.value);
@@ -59,7 +57,6 @@ const FiltersForm = ({ onResponse }) => {
   }
 
   return (
-
     <Box className="form-content" sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
 
       <Typography variant="h6">Property Price Predictor</Typography>
@@ -73,7 +70,9 @@ const FiltersForm = ({ onResponse }) => {
           defaultValue="Neighbourhood"
           onChange={handleNeighbourhoodChange}
         >
+          <MenuItem value="Arbutus">Arbutus</MenuItem>
           <MenuItem value="Cambie">Cambie</MenuItem>
+          <MenuItem value="Champlain Heights">Champlain Heights</MenuItem>
           <MenuItem value="Coal Harbour">Coal Harbour</MenuItem>
           <MenuItem value="Collingwood">Collingwood</MenuItem>
           <MenuItem value="Downtown East">Downtown East</MenuItem>
@@ -81,6 +80,8 @@ const FiltersForm = ({ onResponse }) => {
           <MenuItem value="Dunbar">Dunbar</MenuItem>
           <MenuItem value="Fairview">Fairview</MenuItem>
           <MenuItem value="False Creek">False Creek</MenuItem>
+          <MenuItem value="Fraser East">Fraser East</MenuItem>
+          <MenuItem value="Fraserview East">Fraserview East</MenuItem>
           <MenuItem value="Grandview East">Grandview East</MenuItem>
           <MenuItem value="Hastings">Hastings</MenuItem>
           <MenuItem value="Hastings Sunrise">Hastings Sunrise</MenuItem>
@@ -88,18 +89,24 @@ const FiltersForm = ({ onResponse }) => {
           <MenuItem value="Kerrisdale">Kerrisdale</MenuItem>
           <MenuItem value="Kitsilano">Kitsilano</MenuItem>
           <MenuItem value="Knight">Knight</MenuItem>
+          <MenuItem value="MacKenzie Heights">MacKenzie Heights</MenuItem>
+          <MenuItem value="Main">Main</MenuItem>
           <MenuItem value="Marpole">Marpole</MenuItem>
-          <MenuItem value="Mount Pleasant East">Mount Pleasant</MenuItem>
+          <MenuItem value="Mount Pleasant East">Mount Pleasant East</MenuItem>
+          <MenuItem value="Mount Pleasant West">Mount Pleasant West</MenuItem>
           <MenuItem value="Oakridge">Oakridge</MenuItem>
           <MenuItem value="Point Grey">Point Grey</MenuItem>
+          <MenuItem value="Quilchena">Quilchena</MenuItem>
           <MenuItem value="Renfrew">Renfrew</MenuItem>
           <MenuItem value="Shaughnessy">Shaughnessy</MenuItem>
+          <MenuItem value="South Cambie">South Cambie</MenuItem>
           <MenuItem value="South Granville">South Granville</MenuItem>
+          <MenuItem value="Southlands">Southlands</MenuItem>
           <MenuItem value="South Marine">South Marine</MenuItem>
           <MenuItem value="South Vancouver">South Vancouver</MenuItem>
           <MenuItem value="Southwest Marine">Southwest Marine</MenuItem>
           <MenuItem value="Strathcona">Strathcona</MenuItem>
-          <MenuItem value="University (UBC)">University/UBC</MenuItem>
+          <MenuItem value="University (UBC)">University (UBC)</MenuItem>
           <MenuItem value="Victoria East">Victoria</MenuItem>
           <MenuItem value="West End">West End</MenuItem>
           <MenuItem value="Yaletown">Yaletown</MenuItem>
@@ -172,9 +179,7 @@ const FiltersForm = ({ onResponse }) => {
         }}>
         Submit
       </Button>
-
     </Box>
-
   );
 };
 
