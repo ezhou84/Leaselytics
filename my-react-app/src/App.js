@@ -4,6 +4,7 @@ import FiltersForm from './components/FiltersForm.js';
 import Block from './components/Block.js';
 import logoSvg from './LeaseLyticsLogoBlue.svg';
 import { jwtDecode } from "jwt-decode";
+import SignupForm from './components/SignupForm.js';
 
 function App() {
   const [request, setRequest] = useState({});
@@ -64,14 +65,15 @@ function App() {
           </div>
       }
       <div className="container" style={{ width: '100%' }}>
-        <div className="form">
+        {/* <div className="form">
           <img src={logoSvg} alt="Logo" style={{ width: '400px', height: 'auto' }} />
           <FiltersForm onResponse={handleResponse} />
         </div>
         <div className="block">
           {response != '' && <Block request={request} response={response} />}
-          {/* {response != '' && <Block response={response} />} */}
-        </div>
+          {response != '' && <Block response={response} />}
+        </div> */}
+        <SignupForm />
       </div>
     </div>
   );
