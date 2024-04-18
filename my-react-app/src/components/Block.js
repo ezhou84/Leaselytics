@@ -9,6 +9,7 @@ import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg";
 import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg";
 import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg";
 import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg";
+import NearestNeighbours from './NearestNeighbours.js';
 import PriceCard from './PriceCard.js';
 
 
@@ -56,7 +57,7 @@ const Block = ({ request, response }) => {
                 <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: '10px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <PriceCard request={request} response={response} />
-                        {/* Left column for cards and price card */}
+                        <NearestNeighbours neighbours={response.neighbours} />
                         <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', marginRight: '20px' }}>
                                 <Listings units={units} />
@@ -65,17 +66,16 @@ const Block = ({ request, response }) => {
                                 <TwoBed />
                             </div>
                         </div>
-                        {/* Right column for the listings */}
                     </div>
 
                     {/* Spacer div to push the bottom content down */}
                     {/* <div style={{ flex: 1 }}></div> */}
 
                     {/* Bottom content for bar and pie charts */}
-                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                    {/* <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
                         <CustomBarChart />
                         <RentalTypeDensityPieChart />
-                    </div>
+                    </div> */}
                 </div>
             )}
         </div>

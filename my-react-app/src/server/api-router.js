@@ -55,43 +55,31 @@ router.post("/price", async (req, res) => {
         includeMetadata: true,
     });
 
-    console.log("Query done");
-    console.log(queryResults);
-    const matchingAddresses = queryResults["matches"].map((match) => {
-        const matchingAddress = match["metadata"]["address"];
-        return matchingAddress;
+    const neighbours = queryResults["matches"].map((match) => {
+        const address = match["metadata"]["address"];
+        const price = match["metadata"]["price"];
+        const sqft = match["metadata"]["sqft"];
+        const bed = match["metadata"]["bed"];
+        const bath = match["metadata"]["bath"];
+        const type = match["metadata"]["type"];
+        
+        return {
+            address: address,
+            price: price,
+            sqft: sqft,
+            bed: bed,
+            bath: bath,
+            type: type
+        };
     });
-    console.log(matchingAddresses);
+    console.log(neighbours);
+
     const matchingPrices = queryResults["matches"].map((match) => {
         const matchingPrice = match["metadata"]["price"];
         return matchingPrice;
     });
     console.log(matchingPrices);
-    const matchingSqfts = queryResults["matches"].map((match) => {
-        const matchingSqft = match["metadata"]["sqft"];
-        return matchingSqft;
-    });
-    console.log(matchingSqfts);
-    const matchingBeds = queryResults["matches"].map((match) => {
-        const matchingBed = match["metadata"]["bed"];
-        return matchingBed;
-    });
-    console.log(matchingBeds);
-    const matchingBaths = queryResults["matches"].map((match) => {
-        const matchingBath = match["metadata"]["bath"];
-        return matchingBath;
-    });
-    console.log(matchingBaths);
-    const matchingTypes = queryResults["matches"].map((match) => {
-        const matchingType = match["metadata"]["type"];
-        return matchingType;
-    });
-    console.log(matchingTypes);
-    const matchingNeighbourhoods = queryResults["matches"].map((match) => {
-        const matchingNeighbourhood = match["metadata"]["neighbourhood"];
-        return matchingNeighbourhood;
-    });
-    console.log(matchingNeighbourhoods);
+
     const averagePrice = Math.round(matchingPrices.reduce((sum, price) => {
         const numericPrice = parseInt(price.replace(/[$,/]/g, '').replace('/month', ''));
         return sum + numericPrice;
@@ -100,15 +88,7 @@ router.post("/price", async (req, res) => {
 
     res.send({ 
         price: averagePrice,
-        neighbors: {
-            addresses: matchingAddresses,
-            prices: matchingPrices,
-            sqfts: matchingSqfts,
-            beds: matchingBeds,
-            baths: matchingBaths,
-            types: matchingTypes,
-            neighbourhoods: matchingNeighbourhoods 
-        }
+        neighbours: neighbours
     });
 });
 

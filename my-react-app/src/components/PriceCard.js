@@ -19,7 +19,7 @@ const PriceCard = ({ request, response }) => {
                             {request.location}
                         </Typography>
                         <Typography variant="h4" component="div">
-                            {request.type}, {request.bed} Bed, {request.bath} Bath, {request.sqft} sqft
+                            {request.type}, {request.bed} Bed, {request.bath} Bath, {request.sqft} Sqft
                         </Typography>
                     </Box>
                 </Box>
