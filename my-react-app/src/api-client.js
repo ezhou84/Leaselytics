@@ -5,16 +5,10 @@ import { API_SERVER_URL } from "./config.js";
 export const fetchPrice = async (params) => {
     console.log("fetching price")
     console.log(params);
-    const resp = await axios.get(
+    const res = await axios.post(
         `${API_SERVER_URL}/price`,
-        {
-            params: params
-        }
+        params
     );
 
-
-    console.log("after");
-    console.log(resp.data.price);
-
-    return resp.data.price;
+    return res.data;
 };

@@ -9,19 +9,15 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import logoSvg from '../leaselyticsWhite.svg';
 import { fetchPrice } from '../api-client.js';
-
-
 
 const FiltersForm = ({ onResponse }) => {
   const [neighbourhood, setNeighbourhood] = React.useState('');
   const [location, setLocation] = React.useState('');
-  const [bedrooms, setBedrooms] = React.useState(0);
-  const [bathrooms, setBathrooms] = React.useState(0);
+  const [bed, setBed] = React.useState(0);
+  const [bath, setBath] = React.useState(0);
   const [type, setType] = React.useState('');
   const [sqft, setSqft] = React.useState(0);
-
 
   const handleNeighbourhoodChange = (event) => {
     setNeighbourhood(event.target.value);
@@ -31,12 +27,12 @@ const FiltersForm = ({ onResponse }) => {
     setLocation(event.target.value);
   };
 
-  const handleBedroomChange = (event) => {
-    setBedrooms(event.target.value);
+  const handleBedChange = (event) => {
+    setBed(event.target.value);
   };
 
-  const handleBathroomChange = (event) => {
-    setBathrooms(event.target.value);
+  const handleBathChange = (event) => {
+    setBath(event.target.value);
   };
 
   const handleTypeChange = (event) => {
@@ -47,40 +43,23 @@ const FiltersForm = ({ onResponse }) => {
     setSqft(event.target.value);
   };
 
-  async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft) {
-    // console.log(neighbourhood)
-    // console.log(location)
-    // console.log(bedrooms)
-    // console.log(bathrooms)
-    // console.log(type)
-    // console.log(sqft)
+  async function onSubmit(neighbourhood, location, bed, bath, type, sqft) {
     const req = {
       "neighbourhood": neighbourhood,
       "location": location,
-      "bedrooms": bedrooms,
-      "bathrooms": bathrooms,
+      "bed": bed,
+      "bath": bath,
       "type": type,
       "sqft": sqft
     }
-    const resp = await fetchPrice(req);
-    // console.log("FiltersForm response: " + resp)
-    onResponse(req, resp);
-
+    const res = await fetchPrice(req);
+    onResponse(req, res);
   }
 
   return (
-
     <Box className="form-content" sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
 
       <Typography variant="h6">Property Price Predictor</Typography>
-
-      {/* <TextField
-        label="Neighbourhood"
-        sx={{ my: 2 }}
-        value={neighbourhood}
-        defaultValue=""
-        onChange={handleNeighbourhoodChange}
-      /> */}
 
       <FormControl fullWidth sx={{ my: 2 }}>
         <InputLabel id="Neighbourhood-label">Neighbourhood</InputLabel>
@@ -91,7 +70,9 @@ const FiltersForm = ({ onResponse }) => {
           defaultValue="Neighbourhood"
           onChange={handleNeighbourhoodChange}
         >
+          <MenuItem value="Arbutus">Arbutus</MenuItem>
           <MenuItem value="Cambie">Cambie</MenuItem>
+          <MenuItem value="Champlain Heights">Champlain Heights</MenuItem>
           <MenuItem value="Coal Harbour">Coal Harbour</MenuItem>
           <MenuItem value="Collingwood">Collingwood</MenuItem>
           <MenuItem value="Downtown East">Downtown East</MenuItem>
@@ -99,6 +80,8 @@ const FiltersForm = ({ onResponse }) => {
           <MenuItem value="Dunbar">Dunbar</MenuItem>
           <MenuItem value="Fairview">Fairview</MenuItem>
           <MenuItem value="False Creek">False Creek</MenuItem>
+          <MenuItem value="Fraser East">Fraser East</MenuItem>
+          <MenuItem value="Fraserview East">Fraserview East</MenuItem>
           <MenuItem value="Grandview East">Grandview East</MenuItem>
           <MenuItem value="Hastings">Hastings</MenuItem>
           <MenuItem value="Hastings Sunrise">Hastings Sunrise</MenuItem>
@@ -106,18 +89,24 @@ const FiltersForm = ({ onResponse }) => {
           <MenuItem value="Kerrisdale">Kerrisdale</MenuItem>
           <MenuItem value="Kitsilano">Kitsilano</MenuItem>
           <MenuItem value="Knight">Knight</MenuItem>
+          <MenuItem value="MacKenzie Heights">MacKenzie Heights</MenuItem>
+          <MenuItem value="Main">Main</MenuItem>
           <MenuItem value="Marpole">Marpole</MenuItem>
-          <MenuItem value="Mount Pleasant East">Mount Pleasant</MenuItem>
+          <MenuItem value="Mount Pleasant East">Mount Pleasant East</MenuItem>
+          <MenuItem value="Mount Pleasant West">Mount Pleasant West</MenuItem>
           <MenuItem value="Oakridge">Oakridge</MenuItem>
           <MenuItem value="Point Grey">Point Grey</MenuItem>
+          <MenuItem value="Quilchena">Quilchena</MenuItem>
           <MenuItem value="Renfrew">Renfrew</MenuItem>
           <MenuItem value="Shaughnessy">Shaughnessy</MenuItem>
+          <MenuItem value="South Cambie">South Cambie</MenuItem>
           <MenuItem value="South Granville">South Granville</MenuItem>
+          <MenuItem value="Southlands">Southlands</MenuItem>
           <MenuItem value="South Marine">South Marine</MenuItem>
           <MenuItem value="South Vancouver">South Vancouver</MenuItem>
           <MenuItem value="Southwest Marine">Southwest Marine</MenuItem>
           <MenuItem value="Strathcona">Strathcona</MenuItem>
-          <MenuItem value="University (UBC)">University/UBC</MenuItem>
+          <MenuItem value="University (UBC)">University (UBC)</MenuItem>
           <MenuItem value="Victoria East">Victoria</MenuItem>
           <MenuItem value="West End">West End</MenuItem>
           <MenuItem value="Yaletown">Yaletown</MenuItem>
@@ -136,18 +125,18 @@ const FiltersForm = ({ onResponse }) => {
         type="number"
         label="Bedrooms"
         sx={{ my: 2 }}
-        value={bedrooms}
+        value={bed}
         defaultValue=""
-        onChange={handleBedroomChange}
+        onChange={handleBedChange}
       />
 
       <TextField
         type="number"
         label="Bathrooms"
         sx={{ my: 2 }}
-        value={bathrooms}
+        value={bath}
         defaultValue=""
-        onChange={handleBathroomChange}
+        onChange={handleBathChange}
       />
 
       <FormControl fullWidth sx={{ my: 2 }}>
@@ -160,8 +149,9 @@ const FiltersForm = ({ onResponse }) => {
           defaultValue=""
           onChange={handleTypeChange}
         >
-          <MenuItem value="apartment/condo">Apartment/condo</MenuItem>
+          <MenuItem value="Apt/Condo">Apartment/Condo</MenuItem>
           <MenuItem value="House">House</MenuItem>
+          <MenuItem value="Duplex">Duplex</MenuItem>
           <MenuItem value="Room Only">Room Only</MenuItem>
           <MenuItem value="Townhouse">Townhouse</MenuItem>
         </Select>
@@ -185,16 +175,11 @@ const FiltersForm = ({ onResponse }) => {
           },
         }}
         onClick={() => {
-          onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft)
+          onSubmit(neighbourhood, location, bed, bath, type, sqft)
         }}>
         Submit
       </Button>
-
-      {/* <div>
-        {response === "" ? response : <></>}
-      </div> */}
     </Box>
-
   );
 };
 

@@ -7,8 +7,8 @@ import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [request, setRequest] = useState({});
-  const [response, setResponse] = useState('');
-  const [ user, setUser] = useState({});
+  const [response, setResponse] = useState({});
+  const [user, setUser] = useState({});
 
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -69,8 +69,7 @@ function App() {
           <FiltersForm onResponse={handleResponse} />
         </div>
         <div className="block">
-          {response != '' && <Block request={request} response={response} />}
-          {/* {response != '' && <Block response={response} />} */}
+          {Object.keys(response).length > 0 && <Block request={request} response={response} />}
         </div>
       </div>
     </div>
