@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
-import CustomBarChart from './BarChart.js'
-import RentalTypeDensityPieChart from './PieChart.js'
-import VacancyCard from './VacancyCard.js'
-import OneBed from './OneBed.js'
-import TwoBed from './TwoBed.js'
+import React, { useState } from 'react';
+import CustomBarChart from './BarChart.js';
+import RentalTypeDensityPieChart from './PieChart.js';
+import VacancyCard from './VacancyCard.js';
+import OneBed from './OneBed.js';
+import TwoBed from './TwoBed.js';
 import Listings from './Listings.js';
-import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg"
-import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg"
-import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg"
-import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg"
-import PriceCard from './PriceCard.js'
-
+import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg";
+import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg";
+import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg";
+import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg";
+import PriceCard from './PriceCard.js';
 
 
 const Block = ({ request, response }) => {
@@ -50,7 +49,7 @@ const Block = ({ request, response }) => {
             bed: 1,
             bath: 1
         }
-    ]
+    ];
     return (
         <div>
             {isSubmitted && (
@@ -81,6 +80,6 @@ const Block = ({ request, response }) => {
             )}
         </div>
     );
-}
+};
 
-export default Block
+export default Block;

@@ -9,16 +9,14 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import logoSvg from '../leaselyticsWhite.svg';
 import { fetchPrice } from '../api-client.js';
-
 
 
 const FiltersForm = ({ onResponse }) => {
   const [neighbourhood, setNeighbourhood] = React.useState('');
   const [location, setLocation] = React.useState('');
-  const [bedrooms, setBedrooms] = React.useState(0);
-  const [bathrooms, setBathrooms] = React.useState(0);
+  const [bed, setBed] = React.useState(0);
+  const [bath, setBath] = React.useState(0);
   const [type, setType] = React.useState('');
   const [sqft, setSqft] = React.useState(0);
 
@@ -31,12 +29,12 @@ const FiltersForm = ({ onResponse }) => {
     setLocation(event.target.value);
   };
 
-  const handleBedroomChange = (event) => {
-    setBedrooms(event.target.value);
+  const handleBedChange = (event) => {
+    setBed(event.target.value);
   };
 
-  const handleBathroomChange = (event) => {
-    setBathrooms(event.target.value);
+  const handleBathChange = (event) => {
+    setBath(event.target.value);
   };
 
   const handleTypeChange = (event) => {
@@ -47,25 +45,17 @@ const FiltersForm = ({ onResponse }) => {
     setSqft(event.target.value);
   };
 
-  async function onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft) {
-    // console.log(neighbourhood)
-    // console.log(location)
-    // console.log(bedrooms)
-    // console.log(bathrooms)
-    // console.log(type)
-    // console.log(sqft)
+  async function onSubmit(neighbourhood, location, bed, bath, type, sqft) {
     const req = {
       "neighbourhood": neighbourhood,
       "location": location,
-      "bedrooms": bedrooms,
-      "bathrooms": bathrooms,
+      "bed": bed,
+      "bath": bath,
       "type": type,
       "sqft": sqft
     }
-    const resp = await fetchPrice(req);
-    // console.log("FiltersForm response: " + resp)
-    onResponse(req, resp);
-
+    const res = await fetchPrice(req);
+    onResponse(req, res);
   }
 
   return (
@@ -73,14 +63,6 @@ const FiltersForm = ({ onResponse }) => {
     <Box className="form-content" sx={{ margin: '20px', width: '300px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
 
       <Typography variant="h6">Property Price Predictor</Typography>
-
-      {/* <TextField
-        label="Neighbourhood"
-        sx={{ my: 2 }}
-        value={neighbourhood}
-        defaultValue=""
-        onChange={handleNeighbourhoodChange}
-      /> */}
 
       <FormControl fullWidth sx={{ my: 2 }}>
         <InputLabel id="Neighbourhood-label">Neighbourhood</InputLabel>
@@ -136,18 +118,18 @@ const FiltersForm = ({ onResponse }) => {
         type="number"
         label="Bedrooms"
         sx={{ my: 2 }}
-        value={bedrooms}
+        value={bed}
         defaultValue=""
-        onChange={handleBedroomChange}
+        onChange={handleBedChange}
       />
 
       <TextField
         type="number"
         label="Bathrooms"
         sx={{ my: 2 }}
-        value={bathrooms}
+        value={bath}
         defaultValue=""
-        onChange={handleBathroomChange}
+        onChange={handleBathChange}
       />
 
       <FormControl fullWidth sx={{ my: 2 }}>
@@ -160,8 +142,9 @@ const FiltersForm = ({ onResponse }) => {
           defaultValue=""
           onChange={handleTypeChange}
         >
-          <MenuItem value="apartment/condo">Apartment/condo</MenuItem>
+          <MenuItem value="Apt/Condo">Apartment/Condo</MenuItem>
           <MenuItem value="House">House</MenuItem>
+          <MenuItem value="Duplex">Duplex</MenuItem>
           <MenuItem value="Room Only">Room Only</MenuItem>
           <MenuItem value="Townhouse">Townhouse</MenuItem>
         </Select>
@@ -185,14 +168,11 @@ const FiltersForm = ({ onResponse }) => {
           },
         }}
         onClick={() => {
-          onSubmit(neighbourhood, location, bedrooms, bathrooms, type, sqft)
+          onSubmit(neighbourhood, location, bed, bath, type, sqft)
         }}>
         Submit
       </Button>
 
-      {/* <div>
-        {response === "" ? response : <></>}
-      </div> */}
     </Box>
 
   );

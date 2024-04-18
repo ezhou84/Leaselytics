@@ -13,7 +13,9 @@ const pc = new Pinecone({
 });
 
 const OPEN_AI_API_KEY = process.env.OPEN_AI_API_KEY;
-const openai = new OpenAI({ apiKey: OPEN_AI_API_KEY });
+const openai = new OpenAI({ 
+    apiKey: OPEN_AI_API_KEY 
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -54,14 +56,17 @@ fs.createReadStream(inputFilePath)
         outputStream.write(`${headers.join(',')}\n`);
     })
     .on('data', (row) => {
-        const { Rental_Price, Sqft, Bedroom, Bathroom, Rental_Type, Neighbourhood } = row;
-        const sentence = `"A ${Rental_Type} in ${Neighbourhood}, Vancouver with ${Bedroom}, ${Bathroom}, and an area of ${Sqft} costs ${Rental_Price} to rent."`.replace(/\r?\n|\r/g, '');        
+        const { Address, Rental_Price, Sqft, Bedroom, Bathroom, Rental_Type, Neighbourhood } = row;
+        const sentence = `"A ${Rental_Type} in ${Neighbourhood}, Vancouver with ${Bedroom}, ${Bathroom}, and an area of ${Sqft}."`.replace(/\r?\n|\r/g, '');        
         row.Sentence = sentence;
         metadata.push({
-            text: sentence,
+            address: Address,
             price: Rental_Price,
-            beds: Bedroom,
-            baths: Bathroom
+            sqft: Sqft,
+            bed: Bedroom,
+            bath: Bathroom,
+            type: Rental_Type,
+            neighbourhood: Neighbourhood
         })
         outputStream.write(`${Object.values(row).map(value => `"${value}"`).join(',')}\n`);
     })
@@ -124,4 +129,4 @@ fs.createReadStream(inputFilePath)
         .on('error', (error) => {
             console.error('An error occurred:', error);
         });
-    })
+    });
