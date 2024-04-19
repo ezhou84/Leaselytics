@@ -54,18 +54,18 @@ const Block = ({ request, response }) => {
     return (
         <div>
             {isSubmitted && (
-                <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: '10px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <PriceCard request={request} response={response} />
                         <NearestNeighbours neighbours={response.neighbours} />
-                        <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
+                        {/* <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', marginRight: '20px' }}>
                                 <Listings units={units} />
                                 <VacancyCard />
                                 <OneBed />
                                 <TwoBed />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* Spacer div to push the bottom content down */}
