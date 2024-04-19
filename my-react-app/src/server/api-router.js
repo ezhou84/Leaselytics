@@ -41,7 +41,7 @@ router.post("/price", async (req, res) => {
     const index = pc.Index("leaselytics");
 
     const queryResults = await index.namespace("ns1").query({
-        topK: 5,
+        topK: 6,
         vector: testVector,
         filter: {
             bed: {
