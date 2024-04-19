@@ -5,6 +5,7 @@ import Block from './components/Block.js';
 import logoSvg from './LeaseLyticsLogoBlue.svg';
 import { jwtDecode } from "jwt-decode";
 import { createTheme, ThemeProvider } from '@mui/material';
+import LandingPage from './components/Landing.js';
 
 const theme = createTheme({
   typography: {
@@ -30,7 +31,7 @@ function App() {
     // show option to sign-in button
     document.getElementById("signInDiv").hidden = false;
   }
-  
+
   useEffect(() => {
     /* global google */
     google.accounts.id.initialize({
@@ -39,8 +40,8 @@ function App() {
     })
 
     google.accounts.id.renderButton(
-        document.getElementById("signInDiv"),
-        { theme: "outline", size: "large"}
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large" }
     );
 
     google.accounts.id.prompt();
@@ -56,25 +57,26 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      {/* <LandingPage></LandingPage> */}
       <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <div id="signInDiv"></div>
         {Object.keys(user).length != 0 &&
-            <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
+          <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
         }
-        { user &&
-            <div>
-              <img src={user.picture}></img>
-              <h3>{user.name}</h3>
-            </div>
+        {user &&
+          <div>
+            <img src={user.picture}></img>
+            <h3>{user.name}</h3>
+          </div>
         }
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
-            <div className="form">
-                <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
-                <FiltersForm onResponse={handleResponse} />
-            </div>
-            <div className="block">
-                {Object.keys(response).length > 0 && <Block request={request} response={response} />}
-            </div>
+          <div className="form">
+            <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
+            <FiltersForm onResponse={handleResponse} />
+          </div>
+          <div className="block">
+            {Object.keys(response).length > 0 && <Block request={request} response={response} />}
+          </div>
         </div>
       </div>
     </ThemeProvider>
