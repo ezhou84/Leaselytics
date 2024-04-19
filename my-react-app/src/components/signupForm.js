@@ -1,41 +1,44 @@
-// SignupForm.js
 import React, { useState } from 'react';
-import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
+import { Button, Typography, TextField, Card, CardContent } from '@mui/material';
 
 const SignupForm = () => {
-  const stripe = useStripe();
-  const elements = useElements();
+  const [email, setEmail] = useState('');
+  const [amount, setAmount] = useState('');
   const [error, setError] = useState(null);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    if (!stripe || !elements) {
-      return;
-    }
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    });
-
-    if (error) {
-      setError(error.message);
-    } else {
-      // Send paymentMethod.id to your server
-      console.log('Payment method created:', paymentMethod);
-    }
+    // Here you can add your logic to handle form submission, such as validation or sending data to a server
+    console.log('Form submitted');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Email:</label>
-      <input type="email" required />
-      <label>Credit or debit card:</label>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>Sign Up</button>
-      {error && <div role="alert">{error}</div>}
-    </form>
+    <Card style={{ minWidth: 275, maxWidth: 400, margin: 'auto', marginTop: 50 }}>
+    <CardContent>
+      <Typography variant="h6" gutterBottom>
+        How many credits would you like to purchase?
+      </Typography>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <TextField
+          label="Amount (in cents)"
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          required
+        />
+        <Button type="submit" variant="contained" sx={{
+          mt: 2,
+          backgroundColor: '#4877ee',
+          '&:hover': {
+            backgroundColor: '#1e3264'
+          },
+        }}>
+          Submit
+        </Button>
+      </form>
+      {error && <Typography color="error">{error}</Typography>}
+    </CardContent>
+  </Card>
   );
 };
 
