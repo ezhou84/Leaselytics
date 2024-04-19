@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import CustomBarChart from './BarChart.js'
-import RentalTypeDensityPieChart from './PieChart.js'
-import VacancyCard from './VacancyCard.js'
-import OneBed from './OneBed.js'
-import TwoBed from './TwoBed.js'
+import React, { useState } from 'react';
+import CustomBarChart from './BarChart.js';
+import RentalTypeDensityPieChart from './PieChart.js';
+import VacancyCard from './VacancyCard.js';
+import OneBed from './OneBed.js';
+import TwoBed from './TwoBed.js';
 import Listings from './Listings.js';
-import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg"
-import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg"
-import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg"
-import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg"
-import PriceCard from './PriceCard.js'
-
+import unit1 from ".././unit_images/2107_928_HOMER_STREET.jpg";
+import unit2 from ".././unit_images/303_1985_W_8TH_AVENUE.jpeg";
+import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg";
+import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg";
+import NearestNeighbours from './NearestNeighbours.js';
+import PriceCard from './PriceCard.js';
 
 
 const Block = ({ request, response }) => {
@@ -50,37 +50,36 @@ const Block = ({ request, response }) => {
             bed: 1,
             bath: 1
         }
-    ]
+    ];
     return (
         <div>
             {isSubmitted && (
-                <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: '10px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <PriceCard request={request} response={response} />
-                        {/* Left column for cards and price card */}
-                        <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
+                        <NearestNeighbours neighbours={response.neighbours} />
+                        {/* <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', marginRight: '20px' }}>
                                 <Listings units={units} />
                                 <VacancyCard />
                                 <OneBed />
                                 <TwoBed />
                             </div>
-                        </div>
-                        {/* Right column for the listings */}
+                        </div> */}
                     </div>
 
                     {/* Spacer div to push the bottom content down */}
                     {/* <div style={{ flex: 1 }}></div> */}
 
                     {/* Bottom content for bar and pie charts */}
-                    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                    {/* <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
                         <CustomBarChart />
                         <RentalTypeDensityPieChart />
-                    </div>
+                    </div> */}
                 </div>
             )}
         </div>
     );
-}
+};
 
-export default Block
+export default Block;

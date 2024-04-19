@@ -13,12 +13,14 @@ const pc = new Pinecone({
 });
 
 const OPEN_AI_API_KEY = process.env.OPEN_AI_API_KEY;
-const openai = new OpenAI({ apiKey: OPEN_AI_API_KEY });
+const openai = new OpenAI({ 
+    apiKey: OPEN_AI_API_KEY 
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const inputFilePath = path.join(__dirname, 'rental_homes.csv');
-const outputFilePath = path.join(__dirname, 'rental_homes_transformed.csv');
+const inputFilePath = path.join(__dirname, 'paginated_rew.csv');
+const outputFilePath = path.join(__dirname, 'paginated_rew_transformed.csv');
 
 const outputStream = fs.createWriteStream(outputFilePath);
 
@@ -54,14 +56,18 @@ fs.createReadStream(inputFilePath)
         outputStream.write(`${headers.join(',')}\n`);
     })
     .on('data', (row) => {
-        const { Rental_Price, Sqft, Bedroom, Bathroom, Rental_Type, Neighbourhood } = row;
-        const sentence = `"A ${Rental_Type} in ${Neighbourhood}, Vancouver with ${Bedroom}, ${Bathroom}, and an area of ${Sqft} costs ${Rental_Price} to rent."`.replace(/\r?\n|\r/g, '');        
+        const { Address, Rental_Price, Sqft, Bedroom, Bathroom, Rental_type, Neighbourhood, 'image-src': imageSrc } = row;
+        const sentence = `"A ${Rental_type} in ${Neighbourhood}, Vancouver with ${Bedroom}, ${Bathroom}, and an area of ${Sqft}."`.replace(/\r?\n|\r/g, '');        
         row.Sentence = sentence;
         metadata.push({
-            text: sentence,
+            address: Address,
             price: Rental_Price,
-            beds: Bedroom,
-            baths: Bathroom
+            sqft: Sqft,
+            bed: Bedroom,
+            bath: Bathroom,
+            type: Rental_type,
+            neighbourhood: Neighbourhood,
+            link: imageSrc
         })
         outputStream.write(`${Object.values(row).map(value => `"${value}"`).join(',')}\n`);
     })
@@ -100,6 +106,21 @@ fs.createReadStream(inputFilePath)
             }
         }
 
+        async function batchUpsert(embeddings, batchSize = 100) {
+            for (let i = 0; i < embeddings.length; i += batchSize) {
+                const batch = embeddings.slice(i, i + batchSize);
+                const items = batch.map((item) => ({
+                    id: item.id,
+                    values: item.values,
+                    metadata: item.metadata
+                }));
+                await index.namespace("ns1").upsert(items)
+                    .catch((error) => {
+                        console.error('An error occurred during upsert:', error);
+                    });
+            }
+        }
+
         const embeddingTransform = new EmbeddingTransform();
 
         fs.createReadStream(outputFilePath)
@@ -110,18 +131,16 @@ fs.createReadStream(inputFilePath)
         })
         .on('end', async () => {
             console.log('Processing of sentences completed!');
-            await index.namespace("ns1").upsert(
+            await batchUpsert(
                 embeddings.map((embedding, index) => ({
                     id: `vec${index + 1}`,
                     values: embedding,
                     metadata: metadata[index],
-                }))).then(() => {
-                    console.log('Upsert completed');
-                }).catch((error) => {
-                    console.error('An error occurred during upsert:', error);
-                });
+                }))
+            );
+            console.log('Upsert completed');
         })
         .on('error', (error) => {
             console.error('An error occurred:', error);
         });
-    })
+    });

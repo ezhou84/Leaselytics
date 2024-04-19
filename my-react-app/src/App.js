@@ -4,12 +4,18 @@ import FiltersForm from './components/FiltersForm.js';
 import Block from './components/Block.js';
 import logoSvg from './LeaseLyticsLogoBlue.svg';
 import { jwtDecode } from "jwt-decode";
-import SignupForm from './components/SignupForm.js';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Oxygen", "Manrope", Arial, sans-serif',
+  },
+});
 
 function App() {
   const [request, setRequest] = useState({});
-  const [response, setResponse] = useState('');
-  const [ user, setUser] = useState({});
+  const [response, setResponse] = useState({});
+  const [user, setUser] = useState({});
 
   function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
@@ -44,38 +50,34 @@ function App() {
   // if we have a user: show log-out button
 
   const handleResponse = (req, newResponse) => {
-    console.log("App req:")
-    console.log(req)
-    console.log(`App newResponse: ${newResponse}`)
     setRequest(req);
     setResponse(newResponse);
-    console.log("response: " + response);
   };
 
   return (
-    <div className="App">
-      <div id="signInDiv"></div>
-      {Object.keys(user).length != 0 &&
-          <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
-      }
-      { user &&
-          <div>
-            <img src={user.picture}></img>
-            <h3>{user.name}</h3>
-          </div>
-      }
-      <div className="container" style={{ width: '100%' }}>
-        {/* <div className="form">
-          <img src={logoSvg} alt="Logo" style={{ width: '400px', height: 'auto' }} />
-          <FiltersForm onResponse={handleResponse} />
+    <ThemeProvider theme={theme}>
+      <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div id="signInDiv"></div>
+        {Object.keys(user).length != 0 &&
+            <button onClick={ (e) => handleSignOut(e)}>Sign Out</button>
+        }
+        { user &&
+            <div>
+              <img src={user.picture}></img>
+              <h3>{user.name}</h3>
+            </div>
+        }
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
+            <div className="form">
+                <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
+                <FiltersForm onResponse={handleResponse} />
+            </div>
+            <div className="block">
+                {Object.keys(response).length > 0 && <Block request={request} response={response} />}
+            </div>
         </div>
-        <div className="block">
-          {response != '' && <Block request={request} response={response} />}
-          {response != '' && <Block response={response} />}
-        </div> */}
-        <SignupForm />
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
