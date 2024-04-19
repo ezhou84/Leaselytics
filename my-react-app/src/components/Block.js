@@ -11,6 +11,7 @@ import unit3 from ".././unit_images/3F_2338_WESTERN_PARKWAY.jpeg";
 import unit4 from ".././unit_images/311_1050_BROUGHTON_STREET.jpeg";
 import NearestNeighbours from './NearestNeighbours.js';
 import PriceCard from './PriceCard.js';
+import { Button } from '@mui/material';
 
 
 const Block = ({ request, response }) => {
@@ -58,6 +59,20 @@ const Block = ({ request, response }) => {
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <PriceCard request={request} response={response} />
                         <NearestNeighbours neighbours={response.neighbours} />
+                        <Button
+                            variant="contained"
+                            sx={{
+                            my: 2,
+                            backgroundColor: '#4877ee',
+                            '&:hover': {
+                                backgroundColor: '#1e3264'
+                            },
+                            }}
+                            onClick={() => {
+                                // Save Prediction, from response.price
+                            }}>
+                            <b>Save Prediction</b>
+                        </Button>
                         {/* <div style={{ display: 'flex', flexDirection: 'column', marginRight: '20px' }}>
                             <div style={{ display: 'flex', flexDirection: 'row', marginRight: '20px' }}>
                                 <Listings units={units} />
