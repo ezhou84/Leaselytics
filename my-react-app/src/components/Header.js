@@ -6,15 +6,18 @@ import React, { useState } from 'react';import {
     Typography,
     Menu,
     Container,
-    MenuItem 
+    MenuItem,
+    Select
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logoSvg from '../LeaseLyticsLogoBlue.svg';
 
-const options = ['Profile', 'View Predictions', 'Sign Out'];
+const options = ['Profile', 'Sign Out'];
 
-function Header() {
+function Header({ onLocationChange, locations }) {
   const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const [currentPrediction, setCurrentPrediction] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -29,9 +32,6 @@ function Header() {
       case 'Profile':
         // Add your code for 'Profile' here
         break;
-      case 'View Predictions':
-        // Add your code for 'View Predictions' here
-        break;
       case 'Sign Out':
         // Add your code for 'Sign Out' here
         break;
@@ -41,6 +41,11 @@ function Header() {
     handleCloseUserMenu();
   };
 
+  const handleLocationClick = (location) => {
+    setCurrentPrediction(location);
+    onLocationChange(location);
+  }
+
   return (
     <AppBar position="static" color="primary" sx={{ bgcolor: '#ffffff' }}>
       <Container maxWidth="xl">
@@ -49,10 +54,9 @@ function Header() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
+              display: 'flex' ,
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
@@ -65,6 +69,25 @@ function Header() {
 
           { /* Keep the profile picture fixed to the right side */ }
           <Box sx={{ flexGrow: 1 }} />
+
+          <Typography variant="h6" component="div" sx={{ color: 'text.secondary', fontWeight: 'bold', mr: 2 }}>
+            View Predictions
+          </Typography>
+
+          <Select
+            value={currentPrediction}
+            sx={{ mr: 2 }}
+          >
+            {locations.map((location) => (
+              <MenuItem 
+                key={location}
+                value={location}
+                onClick={() => handleLocationClick(location)}
+              >
+                {location}
+              </MenuItem>
+            ))}
+          </Select>
 
           <Box sx={{ flexGrow: 0 }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
