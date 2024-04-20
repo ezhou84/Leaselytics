@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box, Card, CardContent, Typography } from '@mui/material';
 
 const PriceCard = ({ request, response }) => {
-    const price = response.price;
+    const predictedPrice = response.predictedPrice;
 
     return (
         <Card sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', margin: '20px', alignContent: 'center', borderRadius: '16px', boxShadow: 3 }}>
@@ -13,7 +13,7 @@ const PriceCard = ({ request, response }) => {
                             PREDICTED LISTING PRICE
                         </Typography>
                         <Typography variant="h2" component="div">
-                            <b>${price}/month</b>
+                            <b>${predictedPrice}/month</b>
                         </Typography>
                         <Typography variant="h4" component="div">
                             {request.location}
