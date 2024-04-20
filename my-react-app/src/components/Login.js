@@ -32,6 +32,12 @@ const Login = () => {
         google.accounts.id.prompt(); // This may cause a pop-up to be shown if the user is not signed in
     }, []);
 
+    const updateLoginState = ({ handleLogin }) => {
+        if (user) {
+            handleLogin(true);
+        }
+    }
+
 
     // Correctly check if `user` is truthy to determine what to render
     return (
