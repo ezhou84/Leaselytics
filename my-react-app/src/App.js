@@ -30,11 +30,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-<<<<<<< Updated upstream
-      <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
-          <div className="form">
-=======
       <div
         className="App"
         style={{
@@ -73,7 +68,6 @@ function App() {
             <LandingPage />
           )}
           {/* <div className="form">
->>>>>>> Stashed changes
             <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
             <FiltersForm onResponse={handleResponse} />
           </div>
