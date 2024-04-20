@@ -109,11 +109,12 @@ const FiltersForm = ({ onResponse }) => {
   ];
 
   return (
-    <Box className="form-content" sx={{ margin: '20px', padding: '20px', display: 'flex', flexDirection: 'column' }}>
+    <Box className="form-content" sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Typography sx={{ margin: '20px', fontSize: 24, color: 'text.secondary', fontWeight: 'bold' }}>
+        PROPERTY PRICE PREDICTOR
+      </Typography>
 
-      <Typography variant="h6">Property Price Predictor</Typography>
-
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ px: '20px' }}>
         <Grid item xs={12} sm={12} md={6} lg={4} xl={4}>
           <FormControl fullWidth sx={{ my: 2 }}>
             <InputLabel id="Neighbourhood-label">Neighbourhood</InputLabel>
@@ -206,8 +207,10 @@ const FiltersForm = ({ onResponse }) => {
           '&:hover': {
             backgroundColor: '#1e3264'
           },
+          margin: '20px'
         }}
         onClick={() => {
+          // Check if sufficient number of credits, and if so, deduct a certain number of credits
           onSubmit(neighbourhood, location, bed, bath, type, sqft)
         }}>
         <b>Generate Prediction</b>

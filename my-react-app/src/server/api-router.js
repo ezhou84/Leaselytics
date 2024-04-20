@@ -91,8 +91,9 @@ router.post("/price", async (req, res) => {
     console.log(`Average price: $${averagePrice}`);
 
     res.send({ 
-        price: averagePrice,
-        neighbours: neighbours
+        predictedPrice: averagePrice,
+        neighbours: neighbours,
+        req: req.body
     });
 });
 
