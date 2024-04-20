@@ -15,7 +15,8 @@ function LandingPage({ onLogin }) {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingLeft: '10%',
+    paddingLeft: '20%',
+    paddingRight: '20%',
     paddingTop: '20px',
   };
 
