@@ -25,7 +25,7 @@ function App() {
   };
 
   const handleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
+    setIsLoggedIn(true);
   }
 
   return (
@@ -38,7 +38,6 @@ function App() {
           alignItems: "center",
         }}
       >
-        {/* <Login></Login> */}
         <div
           className="container"
           style={{
@@ -65,7 +64,7 @@ function App() {
               </div>
             </>
           ) : (
-            <LandingPage />
+            <LandingPage onLogin={handleLogin}/>
           )}
           {/* <div className="form">
             <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
