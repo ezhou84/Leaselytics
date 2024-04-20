@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode"; // This assumes you're using jwt-decode v3 with ESM support
 import { Button } from "@mui/material";
 
-const Login = ({ isLoggedIn, onLogin }) => {
+const Login = ({ onLogin }) => {
   const [user, setUser] = useState(null); // Initialize user as null
 
   const handleLogin = () => {

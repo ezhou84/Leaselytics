@@ -63,6 +63,10 @@ function App() {
               width: "80%",
             }}
           >
+            <Header
+              onLocationChange={handleLocationChange}
+              locations={Object.keys(savedPredictions)}
+            />
             <div className="form">
               <FiltersForm onResponse={handleResponse} />
             </div>
@@ -81,10 +85,6 @@ function App() {
         ) : (
           <LandingPage onLogin={handleLogin} />
         )}
-        <Header
-          onLocationChange={handleLocationChange}
-          locations={Object.keys(savedPredictions)}
-        />
       </div>
     </ThemeProvider>
   );
