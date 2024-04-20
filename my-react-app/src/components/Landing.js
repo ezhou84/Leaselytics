@@ -1,59 +1,61 @@
 import React from 'react';
+import background from "./landingPage.jpg";
+import logo from './whiteLogoFull.png';
+import Login from './Login.js';
 
 
 function LandingPage() {
+
+  const containerStyle = {
+    position: 'relative',
+    backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.7917760854341737) 21%, rgba(255,255,255,0) 100%), url(${background})`,
+    height: "100vh",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    paddingLeft: '10%',
+    paddingTop: '20px',
+  };
+
+  const logoStyle = {
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    width: '250px',
+    height: 'auto',
+  };
+
+  const headingStyle = {
+    color: 'white',
+    fontSize: '7rem',
+    marginBottom: '0.5rem',
+  };
+
+  const paragraphStyle = {
+    color: 'white',
+    fontSize: '1.8rem',
+    marginBottom: '2rem',
+  };
+
+
+  const textContainer = {
+    width: "900px",
+  }
+
   return (
-    <div>
-      <h1>This is us!</h1>
-      <p>This is describing the product</p>
-      <button>Login</button>
+    <div style={containerStyle}>
+      <img src={logo} alt="Logo" style={logoStyle} />
+      <div style={textContainer}>
+        <h1 style={headingStyle}>Price your rental with confidence</h1>
+        <p style={paragraphStyle}>
+          Intelligent long-term rental pricing in a single click.
+          Solidify your pricing decisions to list quickly and maximize your suite's potential. </p>
+      </div>
+      <Login></Login>
     </div>
   );
 }
 
 export default LandingPage;
-
-
-// import React from 'react';
-// import { AppBar, Toolbar, Typography, Button, Container, Grid, Box } from '@mui/material';
-
-// function LandingPage() {
-//   return (
-//     <div>
-//       <AppBar position="static">
-//         <Toolbar>
-//           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-//             My Landing Page
-//           </Typography>
-//           <Button color="inherit">Login</Button>
-//         </Toolbar>
-//       </AppBar>
-//       <Box sx={{ bgcolor: 'background.default', py: 8 }}>
-//         <Container>
-//           <Grid container spacing={4} justifyContent="center">
-//             <Grid item xs={12} md={6}>
-//               <Typography variant="h3" component="h1" align="center" gutterBottom>
-//                 Welcome to Our Site
-//               </Typography>
-//               <Typography variant="subtitle1" align="center" paragraph>
-//                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec elit et ex
-//                 placerat scelerisque. Vestibulum ante ipsum primis in faucibus orci luctus et
-//                 ultrices posuere cubilia curae.
-//               </Typography>
-//               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-//                 <Button variant="contained" color="primary">
-//                   Learn More
-//                 </Button>
-//               </Box>
-//             </Grid>
-//             <Grid item xs={12} md={6}>
-//               {/* Add any additional content here */}
-//             </Grid>
-//           </Grid>
-//         </Container>
-//       </Box>
-//     </div>
-//   );
-// }
-
-// export default LandingPage;

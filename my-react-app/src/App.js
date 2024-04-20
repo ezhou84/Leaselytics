@@ -26,9 +26,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <LandingPage></LandingPage> */}
       <div className="App" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Login></Login>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
           <div className="form">
             <img src={logoSvg} alt="Logo" style={{ width: '60%', height: 'auto' }} />
