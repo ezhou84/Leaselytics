@@ -1,6 +1,6 @@
 import React from 'react';
-import background from "./landingPage.jpg";
-import logo from './whiteLogoFull.png';
+import background from "./images/LandingBackground.jpg";
+import logo from './images/whiteLogoFull.png';
 import Login from './Login.js';
 
 

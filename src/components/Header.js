@@ -10,7 +10,7 @@ import React, { useState } from 'react';import {
     Select
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
-import logoSvg from '../LeaseLyticsLogoBlue.svg';
+import logoSvg from './images/LeaseLyticsLogoBlue.svg';
 
 const options = ['Profile', 'Sign Out'];
 
