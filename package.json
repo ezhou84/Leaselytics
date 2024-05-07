@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "@mui/styles": "^5.15.15",
     "@mui/x-charts": "^7.0.0",
     "@pinecone-database/pinecone": "^2.2.0",
     "@stripe/react-stripe-js": "^2.7.0",
@@ -25,8 +24,7 @@
     "openai": "^4.29.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-google-login": "^5.2.2",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
