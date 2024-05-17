@@ -12,7 +12,7 @@ Leaselytics is a web-app platform that is a one-stop shop to unlocking the value
 ## Quickstart
 Clone the repo and install the dependencies:
 ```sh
-git clone git@github.com:justpenguins/Leaselytics.git
+git clone git@github.com:ezhou84/Leaselytics.git
 npm i
 ```
 Start the web server:
