@@ -1,10 +1,10 @@
 import React from 'react';
 import background from "./images/LandingBackground.jpg";
 import logo from './images/whiteLogoFull.png';
-import Login from './Login.js';
+import Login2 from './Login2.js';
 
 
-function LandingPage({ onLogin }) {
+function Landing() {
 
   const containerStyle = {
     position: 'relative',
@@ -54,9 +54,9 @@ function LandingPage({ onLogin }) {
           Intelligent long-term rental pricing in a single click.
           Solidify your pricing decisions to list quickly and maximize your suite's potential. </p>
       </div>
-      <Login onLogin={onLogin}></Login>
+      <Login2 />
     </div>
   );
 }
 
-export default LandingPage;
+export default Landing;

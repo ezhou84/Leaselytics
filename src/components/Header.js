@@ -11,12 +11,14 @@ import React, { useState } from 'react';import {
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logoSvg from './images/LeaseLyticsLogoBlue.svg';
-
-const options = ['Profile', 'Sign Out'];
+import { useAuth } from './contexts/authContext/index.jsx';
+import { doSignOut } from './firebase/auth.js';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ onLocationChange, locations }) {
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
   const [anchorElUser, setAnchorElUser] = useState(null);
-
   const [currentPrediction, setCurrentPrediction] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -29,11 +31,11 @@ function Header({ onLocationChange, locations }) {
 
   const handleMenuItemClick = (option) => {
     switch (option) {
-      case 'Profile':
-        // Add your code for 'Profile' here
-        break;
       case 'Sign Out':
-        // Add your code for 'Sign Out' here
+        doSignOut()
+          .then(
+            () => { navigate('/login'); }
+          );
         break;
       default:
         break;
@@ -45,6 +47,11 @@ function Header({ onLocationChange, locations }) {
     setCurrentPrediction(location);
     onLocationChange(location);
   }
+
+  const options = [
+    currentUser.displayName ? currentUser.displayName : currentUser.email,
+    'Sign Out'
+  ];
 
   return (
     <AppBar position="static" color="primary" sx={{ bgcolor: '#ffffff' }}>
