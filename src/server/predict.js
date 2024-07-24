@@ -1,6 +1,6 @@
-import 'dotenv/config'
-import OpenAI from 'openai';
-import { Pinecone } from '@pinecone-database/pinecone';
+import "dotenv/config";
+import OpenAI from "openai";
+import { Pinecone } from "@pinecone-database/pinecone";
 
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const pc = new Pinecone({
