@@ -1,7 +1,7 @@
 import React from 'react';
 import background from "./images/LandingBackground.jpg";
 import logo from './images/whiteLogoFull.png';
-import Login2 from './Login2.js';
+import Login from './Login.js';
 
 
 function Landing() {
@@ -54,7 +54,7 @@ function Landing() {
           Intelligent long-term rental pricing in a single click.
           Solidify your pricing decisions to list quickly and maximize your suite's potential. </p>
       </div>
-      <Login2 />
+      <Login />
     </div>
   );
 }

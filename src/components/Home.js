@@ -41,9 +41,7 @@ function Home() {
                 onLocationChange={handleLocationChange}
                 locations={Object.keys(savedPredictions)}
             />
-            <div className="form">
-                <FiltersForm onResponse={handleResponse} />
-            </div>
+            <FiltersForm onResponse={handleResponse} />
             {Object.keys(response).length > 0 && (
                 <div className="block">
                     <Block

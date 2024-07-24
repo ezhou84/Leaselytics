@@ -11,8 +11,8 @@ import React, { useState } from 'react';import {
 } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import logoSvg from './images/LeaseLyticsLogoBlue.svg';
-import { useAuth } from './contexts/authContext/index.jsx';
-import { doSignOut } from './firebase/auth.js';
+import { useAuth } from '../contexts/authContext/index.jsx';
+import { doSignOut } from '../firebase/auth.js';
 import { useNavigate } from 'react-router-dom';
 
 function Header({ onLocationChange, locations }) {
@@ -116,7 +116,10 @@ function Header({ onLocationChange, locations }) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {options.map((setting) => (
+              <MenuItem style={{ pointerEvents: 'none' }}>
+                <Typography textAlign="center"><b>{options[0]}</b></Typography>
+              </MenuItem>
+              {options.slice(1).map((setting) => (
                 <MenuItem key={setting} onClick={() => handleMenuItemClick(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>

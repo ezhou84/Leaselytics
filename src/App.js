@@ -3,7 +3,7 @@ import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Landing from "./components/Landing.js";
 import { useRoutes } from "react-router-dom";
-import { AuthProvider } from "./components/contexts/authContext/index.jsx";
+import { AuthProvider } from "./contexts/authContext/index.jsx";
 import Home from "./components/Home.js";
 
 const theme = createTheme({
