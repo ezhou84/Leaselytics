@@ -50,7 +50,7 @@ const Login = () => {
             {userLoggedIn && (<Navigate to={'/home'} replace={true} />)}
 
             {isSignUp ? 
-                <Box className="login-form" style={{ margin: 'auto', width: '50%' }} sx={{ py: 2 }}>
+                <Box className="login-form" style={{ margin: 'auto' }} sx={{ py: 2 }}>
                     <Typography sx={{ my: 1, fontSize: 24, color: 'text.secondary', fontWeight: 'bold' }}>
                         Welcome Back
                     </Typography>
@@ -108,7 +108,7 @@ const Login = () => {
                         </Typography>
                     </Button>
                 </Box> : 
-                <Box className="login-form" style={{ margin: 'auto', width: '50%' }} sx={{ py: 2 }}>
+                <Box className="login-form" style={{ margin: 'auto' }} sx={{ py: 2 }}>
                     <Typography sx={{ my: 1, fontSize: 24, color: 'text.secondary', fontWeight: 'bold' }}>
                         Create a New Account
                     </Typography>
