@@ -9,3 +9,5 @@ const server = express();
 server.use("/api", apiRouter);
 
 server.listen(PORT, HOST);
+
+export default server;
