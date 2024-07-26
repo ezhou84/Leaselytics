@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { API_SERVER_URL } from "./config.js";
+import { API_SERVER_URL } from "../config.js";
 
 export const fetchPrice = async (params) => {
     const res = await axios.post(

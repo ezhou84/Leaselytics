@@ -10,7 +10,7 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import { fetchPrice } from '../api-client.js';
+import { fetchPrice } from '../api/api-client.js';
 
 const FiltersForm = ({ onResponse }) => {
   const [neighbourhood, setNeighbourhood] = React.useState('');
