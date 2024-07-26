@@ -14,6 +14,10 @@ server.use(cors({
   origin: 'https://leaselytics.vercel.app/'
 }));
 
+server.get("/", (req, res) => {
+  res.json("Hello");
+})
+
 server.use("/api", apiRouter);
 
 server.listen(PORT, HOST);
