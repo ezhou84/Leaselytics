@@ -1,4 +1,4 @@
-![Leaselytics Logo](./src/components/images/LeaseLyticsLogoBlue.svg)
+![Leaselytics Logo](./frontend/src/components/images/LeaseLyticsLogoBlue.svg)
 
 ## An intelligent rental home pricing solution
 
@@ -26,6 +26,6 @@ npm run server
 The site will be running in `http://localhost:3000`.
 
 ## Screenshots
-![Landing Page](./src/components/images/Landing.png)
-![Home Page 1](./src/components/images/HomePage1.png)
-![Home Page 2](./src/components/images/HomePage2.png)
+![Landing Page](./frontend/src/components/images/Landing.png)
+![Home Page 1](./frontend/src/components/images/HomePage1.png)
+![Home Page 2](./frontend/src/components/images/HomePage2.png)

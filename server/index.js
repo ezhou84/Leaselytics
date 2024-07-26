@@ -1,8 +1,8 @@
 import express from "express";
 
-import apiRouter from "./api-router.js";
+import apiRouter from "./src/api-router.js";
 
-import { HOST, PORT } from "../../frontend/src/config.js";
+import { HOST, PORT } from "../frontend/src/config.js";
 
 import cors from "cors";
 
