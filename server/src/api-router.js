@@ -18,7 +18,7 @@ const router = express.Router();
 router.use(cors());
 router.use(express.json());
 
-router.post("/price", async (req, res) => {
+router.get("/price", async (req, res) => {
     const {
         neighbourhood,
         bed,
