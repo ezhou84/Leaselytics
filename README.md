@@ -9,22 +9,6 @@ Leaselytics is a web-app platform that is a one-stop shop to unlocking the value
 - **Comparative Market Analysis**: Displays similar rental homes based on the `k`-nearest neighbours from our model
 - **Expansive Data Collection**: Our model is trained on extensive data from the Vancouver housing market
 
-## Quickstart
-Clone the repo and install the dependencies:
-```sh
-git clone git@github.com:ezhou84/Leaselytics.git
-npm i
-```
-Start the web server:
-```sh
-npm start
-```
-Start the API server:
-```sh
-npm run server
-```
-The site will be running in `http://localhost:3000`.
-
 ## Screenshots
 ![Landing Page](./frontend/src/components/images/Landing.png)
 ![Home Page 1](./frontend/src/components/images/HomePage1.png)
