@@ -30,7 +30,7 @@ router.get("/price", async (req, res) => {
         bath,
         type,
         sqft
-    } = req.body;
+    } = req.query;
 
     const sentence = `A ${type} in ${neighbourhood}, Vancouver with ${bed} Bed, ${bath} Bath, and an area of ${sqft} Sqft.`;
     console.log(sentence);  
