@@ -24,7 +24,11 @@ router.use(cors({
 router.use(express.json());
 
 router.get("/price", async (req, res) => {
-    console.log(req);
+    console.log('Request keys:');
+    Object.keys(req).forEach(key => {
+        console.log(key);
+      });
+    console.log(req.query);
     const {
         neighbourhood,
         bed,
