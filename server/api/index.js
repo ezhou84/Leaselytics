@@ -11,7 +11,7 @@ const server = express();
 server.use(cors());
 
 server.use(cors({
-  origin: 'https://leaselytics.vercel.app/home',
+  origin: 'https://leaselytics.vercel.app',
   methods: ["POST", "GET"],
   credentials: true
 }));
