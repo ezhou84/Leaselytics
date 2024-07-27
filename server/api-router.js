@@ -24,6 +24,7 @@ router.use(cors({
 router.use(express.json());
 
 router.get("/price", async (req, res) => {
+    console.log(req);
     const {
         neighbourhood,
         bed,
