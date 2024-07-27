@@ -17,20 +17,25 @@ const openai = new OpenAI({
 const router = express.Router();
 router.use(cors());
 router.use(cors({
-    origin: 'https://leaselytics.vercel.app/',
+    origin: 'https://leaselytics.vercel.app',
     methods: ["POST", "GET"],
     credentials: true
   }));
 router.use(express.json());
 
 router.get("/price", async (req, res) => {
+    console.log('Request keys:');
+    Object.keys(req).forEach(key => {
+        console.log(key);
+      });
+    console.log(req.query);
     const {
         neighbourhood,
         bed,
         bath,
         type,
         sqft
-    } = req.body;
+    } = req.query;
 
     const sentence = `A ${type} in ${neighbourhood}, Vancouver with ${bed} Bed, ${bath} Bath, and an area of ${sqft} Sqft.`;
     console.log(sentence);  
@@ -98,7 +103,7 @@ router.get("/price", async (req, res) => {
     res.send({ 
         predictedPrice: averagePrice,
         neighbours: neighbours,
-        req: req.body
+        req: req.query
     });
 });
 
