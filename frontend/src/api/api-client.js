@@ -7,10 +7,9 @@ export const fetchPrice = async (params) => {
     const url = `${API_SERVER_URL}/price`;
     console.log(url);
     console.log(params);
-    const res = await axios.get(
-        url,
-        params
-    );
+    const res = await axios.get(url, {
+        params: params
+    });
 
     return res.data;
 };
