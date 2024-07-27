@@ -103,7 +103,7 @@ router.get("/price", async (req, res) => {
     res.send({ 
         predictedPrice: averagePrice,
         neighbours: neighbours,
-        req: req.body
+        req: req.query
     });
 });
 
