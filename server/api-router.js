@@ -17,7 +17,7 @@ const openai = new OpenAI({
 const router = express.Router();
 router.use(cors());
 router.use(cors({
-    origin: 'https://leaselytics.vercel.app/',
+    origin: 'https://leaselytics.vercel.app/home',
     methods: ["POST", "GET"],
     credentials: true
   }));
